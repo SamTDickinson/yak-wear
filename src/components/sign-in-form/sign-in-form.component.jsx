@@ -4,7 +4,6 @@ import Button from "../../components/button/button.component";
 import {UserContext} from "../contexts/user.context";
 import {
     signInWithGooglePopup,
-    createUserDocumentFromAuth,
     signInAuthUserWithEmailAndPassword
 } from "../../utils/firebase/firebase.utils";
 
@@ -51,7 +50,8 @@ const SignInForm = () => {
 
     const signInWithGoogle = async () => {
         const {user} = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
+        setCurrentUser(user);
+        // await createUserDocumentFromAuth(user);
     }
 
     const handleChange = (event) => {
